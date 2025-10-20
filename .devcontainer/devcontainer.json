@@ -1,0 +1,69 @@
+{
+  // ============================================================
+  // VS Code Customization
+  // ============================================================
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "cmake.sourceDirectory": "${workspaceFolder}" // Set CMake source to the current workspace
+      },
+      "extensions": [ // Extensions to install automatically inside the container
+        "nordic-semiconductor.nrf-connect",
+        "nordic-semiconductor.nrf-kconfig",
+        "nordic-semiconductor.nrf-terminal",
+        "nordic-semiconductor.nrf-devicetree",
+        "nordic-semiconductor.nrf-connect-extension-pack",
+        "ms-vscode.cmake-tools",
+        "ms-vscode.cpptools",
+        "marus25.cortex-debug",
+        "eamodio.gitlens",
+        "ms-vscode.cpptools-extension-pack"
+      ]
+    }
+  },
+
+  // ============================================================
+  // Image Configuration
+  // ============================================================
+  "image": "ghcr.io/nrfconnect/sdk-nrf-toolchain",
+
+  // ============================================================
+  // Mount Configuration
+  // ============================================================
+  "mounts": [
+    "source=ccache,target=/home/root/.cache/ccache,type=volume",  // Mount ccache storage
+    "source=sdk-nrf,target=/work/ncs,type=volume",                // Mount nRF Connect SDK
+    "source=SEGGER,target=/opt/SEGGER,type=volume"                // Mount SEGGER
+  ],
+
+  // ============================================================
+  // Environment & User Configuration
+  // ============================================================
+  "name": "nRF Connect SDK DevContainer (Non-Root)",
+  "remoteUser": "root",
+  "remoteEnv": {
+    "PATH": "${containerEnv:PATH}:/opt/SEGGER/JLink:/home/root/.local/bin:/opt/ncs/toolchain/bin", // Extend PATH for SDK tools
+    "CCACHE_DIR": "/home/root/.cache/ccache", // ccache directory
+    "CCACHE_UMASK": "002"                     // Set file permissions for shared cache
+  },
+
+  // ============================================================
+  // Runtime Arguments
+  // ============================================================
+  "runArgs": [
+    "--group-add=keep-groups",                                  // Keep host user groups
+    "--mount=type=bind,src=/dev/bus/usb,dst=/dev/bus/usb,rw",   // Allow USB device access
+    "--volume=/run/udev:/run/udev:ro",                          // Mount udev for device detection
+    "--cap-add=SYS_PTRACE",                                     // Enable debugging capability
+    "-w", "/work/ncs",                                          // Set working directory
+    "--security-opt", "seccomp=unconfined"                      // Disable seccomp restrictions
+  ],
+
+  "updateRemoteUserUID": true, // Match container user UID/GID with host to prevent permission issues
+
+  // ============================================================
+  // Workspace Configuration
+  // ============================================================
+  "workspaceFolder": "/work/ncs/app", // Default folder opened in VS Code
+  "workspaceMount": "source=${localWorkspaceFolder},target=/work/ncs/app,type=bind" // Mount workspace into container
+}
