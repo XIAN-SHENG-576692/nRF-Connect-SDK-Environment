@@ -17,7 +17,7 @@ Fix the `Failed to send reload request: Permission denied` error.
 
 ### `install_ncs_in_volume.sh`
 
-Install the **nRF Connect SDK** in the mounted volume.  
+Install the **nRF Connect SDK** in the mounted volume.
 
 > [!CAUTION]  
 > The script **must be executed inside the container**.
