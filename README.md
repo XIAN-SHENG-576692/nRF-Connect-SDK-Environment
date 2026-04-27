@@ -11,6 +11,12 @@
 
 Create the `.devcontainer/.env` file so that it can be used in other applications.
 
+> [!TIP]  
+> Run this command to get help.
+> ```bash
+> ./dev_setup_scripts/create_config_env.sh -h
+> ```
+
 ### `fix_jlink_error.sh`
 
 Fix the `Failed to send reload request: Permission denied` error.
@@ -23,6 +29,12 @@ Install the **nRF Connect SDK** in the mounted volume.
 > The script **must be executed inside the container**.
 > 
 > The script must use `west`, please refer to [How to Access the `west` Environment in a Container](<#how-to-access-the-west-environment-in-a-container>)
+
+> [!TIP]  
+> Run this command to get help.
+> ```bash
+> ./dev_setup_scripts/install_ncs_in_volume.sh -h
+> ```
 
 ### `install_tools_for_native_building.sh`
 
