@@ -1,5 +1,17 @@
 # nRF-Connect-SDK-Dev-Container
 
+## Features
+
+- Requires only the `ms-vscode-remote.remote-containers` extension in VS Code to get started.  
+- Supports USB device mounting, making it easy to test projects on real devices.  
+
+## Install
+
+```bash
+git clone --filter=tree:0 --depth=1 --no-tags \
+https://github.com/XIAN-SHENG-576692/nRF-Connect-SDK-Dev-Container.git
+```
+
 ## File Structure
 
 - `.devcontainer/`: The configuration files for `ms-vscode-remote.remote-containers` extension in VS Code to build the container.
@@ -7,7 +19,7 @@
 
 ## Scripts in `dev/`
 
-### `create_config_env.sh`
+### [create_config_env.sh](dev/create_config_env.sh)
 
 Create the `.devcontainer/.env` file so that it can be used in other applications.
 
@@ -17,11 +29,11 @@ Create the `.devcontainer/.env` file so that it can be used in other application
 > ./dev/create_config_env.sh -h
 > ```
 
-### `fix_jlink_error.sh`
+### [fix_jlink_error.sh](dev/fix_jlink_error.sh)
 
 Fix the `Failed to send reload request: Permission denied` error.
 
-### `install_ncs_in_volume.sh`
+### [install_ncs_in_volume.sh](dev/install_ncs_in_volume.sh)
 
 Install the **nRF Connect SDK** in the mounted volume.
 
@@ -36,15 +48,15 @@ Install the **nRF Connect SDK** in the mounted volume.
 > ./dev/install_ncs_in_volume.sh -h
 > ```
 
-### `install_tools_for_native_building.sh`
+### [install_tools_for_native_building.sh](dev/install_tools_for_native_building.sh)
 
 Installs the necessary tools to build the cmake target.
 
-### `install_tools_for_native_sim_building.sh`
+### [install_tools_for_native_sim_building.sh](dev/install_tools_for_native_sim_building.sh)
 
 Install nRF Connect SDK dependencies for `native_sim` builds.
 
-### `pull_nrf_image.sh`
+### [pull_nrf_image.sh](dev/pull_nrf_image.sh)
 
 The script to pull the latest image.
 
