@@ -1,4 +1,4 @@
-# NRF Dev Container
+# nRF-Connect-SDK-Dev-Container
 
 ## File Structure
 
