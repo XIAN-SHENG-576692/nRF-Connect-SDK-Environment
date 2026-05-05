@@ -3,9 +3,9 @@
 ## File Structure
 
 - `.devcontainer/`: The configuration files for `ms-vscode-remote.remote-containers` extension in VS Code to build the container.
-- `dev_setup_scripts/`: Some scripts for developer.
+- `dev/`: Some scripts for developer.
 
-## Scripts in `dev_setup_scripts/`
+## Scripts in `dev/`
 
 ### `create_config_env.sh`
 
@@ -14,7 +14,7 @@ Create the `.devcontainer/.env` file so that it can be used in other application
 > [!TIP]  
 > Run this command to get help.
 > ```bash
-> ./dev_setup_scripts/create_config_env.sh -h
+> ./dev/create_config_env.sh -h
 > ```
 
 ### `fix_jlink_error.sh`
@@ -33,7 +33,7 @@ Install the **nRF Connect SDK** in the mounted volume.
 > [!TIP]  
 > Run this command to get help.
 > ```bash
-> ./dev_setup_scripts/install_ncs_in_volume.sh -h
+> ./dev/install_ncs_in_volume.sh -h
 > ```
 
 ### `install_tools_for_native_building.sh`
